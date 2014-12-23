@@ -33,10 +33,10 @@
     <ClCompile Include="..\src\evolution_wav_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\core\vs2013\evolution_core.vcxproj">
+    <ProjectReference Include="..\..\evolution-core\vs2013\evolution_core.vcxproj">
       <Project>{9e6fb115-8d55-4a88-8a54-63d40aac73f1}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\utility\vs2013\evolution_utility.vcxproj">
+    <ProjectReference Include="..\..\evolution-utility\vs2013\evolution_utility.vcxproj">
       <Project>{d8293f0e-1868-4cf6-b099-6eff4dbc2ef9}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -100,6 +100,8 @@
       <PreprocessorDefinitions>_X32;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,6 +118,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_X32;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -129,13 +132,15 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_X64;WIN64;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>_X64;WIN64;NODEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
