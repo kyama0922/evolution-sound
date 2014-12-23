@@ -1,7 +1,7 @@
-#ifndef __EVOLUTION_SOUND_H__
-#define __EVOLUTION_SOUND_H__
+#ifndef __EVOLUTION_SOUND__
+#define __EVOLUTION_SOUND__
 
 //EVOLUTIONライブラリのサウンド機能を提供する
 #include "evolution_sound_interface.h"
 
-#endif // !__SOUND_H__
+#endif // !__EVOLUTION_SOUND__
