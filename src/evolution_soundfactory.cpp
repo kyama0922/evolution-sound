@@ -10,7 +10,7 @@ using namespace EVOLUTION::SOUND;
 
 void EVOLUTION::FUNCTION::CreateSoundFactory(SOUND::ISoundFactory** pp_sound_factory, void *hwnd){
 	*pp_sound_factory = nullptr;
-	SoundFactory* sound_factory = new SoundFactory();
+	SoundFactory* sound_factory = NEW SoundFactory();
 	sound_factory->Create((HWND)hwnd);
 	*pp_sound_factory = sound_factory;
 }
@@ -112,22 +112,30 @@ void SoundFactory::Create(HWND hwnd){
 
 void SoundFactory::CreateStreamSoundManager(IStreamSoundManager** pp_stream_sound_manager){
 	*pp_stream_sound_manager = nullptr;
-	StreamSoundManager* streamsoundmanager = new StreamSoundManager(this->mp_sound_device, &this->m_primary_format);
+	StreamSoundManager* streamsoundmanager = NEW StreamSoundManager(this->mp_sound_device, &this->m_primary_format);
     EVOLUTION_ASSERT_LOG(streamsoundmanager);
 	*pp_stream_sound_manager = streamsoundmanager;
 }
 
 void SoundFactory::CreateSound(ISound** pp_sound, ISoundFileLoader* sound_file){
 	*pp_sound = nullptr;
-	Sound* sound = new Sound(this->mp_sound_device , &this->m_primary_format);
+	Sound* sound = NEW Sound(this->mp_sound_device , &this->m_primary_format);
     EVOLUTION_ASSERT(sound != nullptr);
 	sound->Create(sound_file);
 	*pp_sound = sound;
 }
 
+void SoundFactory::CreateWriteSound(IWriteSound** pp_write_sound, u32 buffer_size, const WAVEFORMATEX& sound_format){
+    *pp_write_sound = nullptr;
+    WriteSound* sound = NEW WriteSound(this->mp_sound_device, &this->m_primary_format);
+    EVOLUTION_ASSERT(sound != nullptr);
+    sound->Create(buffer_size, sound_format);
+    *pp_write_sound = sound;
+}
+
 void SoundFactory::CreateSound3D(ISound3D** pp_sound3d, ISoundFileLoader* sound_file){
 	*pp_sound3d = nullptr;
-	Sound3D* sound3d = new Sound3D(this->mp_sound_device, &this->m_primary_format);
+	Sound3D* sound3d = NEW Sound3D(this->mp_sound_device, &this->m_primary_format);
 	EVOLUTION_ASSERT(sound3d != nullptr);
 	sound3d->Create(sound_file);
 	*pp_sound3d = sound3d;

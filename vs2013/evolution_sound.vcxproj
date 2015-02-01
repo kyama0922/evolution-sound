@@ -31,6 +31,7 @@
     <ClCompile Include="..\src\evolution_streamsound.cpp" />
     <ClCompile Include="..\src\evolution_streamsoundmanager.cpp" />
     <ClCompile Include="..\src\evolution_wav_loader.cpp" />
+    <ClCompile Include="..\src\evolution_writesound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\evolution-core\vs2013\evolution_core.vcxproj">
