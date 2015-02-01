@@ -58,6 +58,48 @@ namespace EVOLUTION{
 			bool IsPlay();
 		};
 
+        //拡張サウンド
+        class WriteSound :public IWriteSound{
+        private:
+            InstanceCounter m_instance_counter;
+            IDirectSoundBuffer* mp_soundbuffer;
+            u32 m_max_time;
+            u32 m_now_time;
+
+            WAVEFORMATEX *mp_primary_format;
+            IDirectSound *mp_sound_device;
+
+            u32 m_buffer_size;
+        public:
+            u32 AddRef();
+            RESULT QueryInterface(EVOLUTION_IID riid, void **ppvObject);
+            u32 Release();
+
+            WriteSound(IDirectSound* direct_sound, WAVEFORMATEX* primary_format);
+            ~WriteSound();
+
+            RESULT Create(u32 buffer_size, const WAVEFORMATEX& sound_format);
+
+            ISound* Copy();//サウンドのコピー
+            void Play(bool loop);//再生
+            void Pause();//一時停止
+            void Stop();//停止
+            void SetPan(s32 pan);//パン
+            void SetVolume(s32 volume);//ボリューム-10000 ~ 0
+            void SetPlayPos(u32 second);//再生タイム秒
+            void SetFrequency(float frequency);//周波数
+            s32 GetVolume();//ボリューム取得
+            f32 GetFrequency();	//周波数
+            u32 GetPlayPosSecond();//再生タイム秒取得
+            u32 GetPlayPosMillSecond();//再生タイムミリ秒取得
+            u32 GetPlayPosBuffer();//バッファ再生場所取得
+            u32 GetTime();
+            bool IsPlay();
+
+            u32 GetBufferSize()const;//バッファサイズの取得
+            void WriteBuffer(u32 write_position, void* buffer, s32 buffer_size);//バッファを書き込む
+        };
+
 		class Sound3D : public ISound3D{
 		private:
             InstanceCounter m_instance_counter;
@@ -86,7 +128,7 @@ namespace EVOLUTION{
 			void SetPlayPos(u32 second);//再生タイム秒
 			void SetFrequency(float frequency);//周波数設定
 			u32 GetPlayPos();//再生タイム秒取得
-			float GetFrequency();//周波数取得
+            f32 GetFrequency();//周波数取得
 			u32 GetTime();
 			bool IsPlay();
 		};
@@ -126,7 +168,7 @@ namespace EVOLUTION{
 			void SetPlayPos(u32 second);//再生タイム秒
 			void SetFrequency(float frequency);//周波数
 			s32 GetVolume();//ボリューム取得
-			float GetFrequency();	//周波数
+            f32 GetFrequency();	//周波数
 			u32 GetPlayPosSecond();//再生タイム秒取得
 			u32 GetPlayPosMillSecond();//再生タイムミリ秒取得
 			u32 GetTime();
@@ -192,6 +234,7 @@ namespace EVOLUTION{
 			void Create(HWND hwnd);
 			void CreateStreamSoundManager(IStreamSoundManager** pp_stream_sound_manager);
 			void CreateSound(ISound** pp_sound, ISoundFileLoader* sound_file);
+            void CreateWriteSound(IWriteSound** pp_write_sound, u32 buffer_size, const WAVEFORMATEX& sound_format);
 			void CreateSound3D(ISound3D** pp_sound3d, ISoundFileLoader* sound_file);
 			void CreateSoundFile(ISoundFileLoader** p_sound_file, const char* file_name);
 		};
@@ -201,6 +244,11 @@ namespace EVOLUTION{
         // {050CF4C2-792C-41d2-BE5F-DD91538C3120}
         static const EVOLUTION_IID IID_Sound =
         { 0x50cf4c2, 0x792c, 0x41d2, { 0xbe, 0x5f, 0xdd, 0x91, 0x53, 0x8c, 0x31, 0x20 } };
+
+        // {57E0DB57-2588-473e-B08D-67ABFF514C28}
+        static const EVOLUTION_IID IID_WriteSound =
+        { 0x57e0db57, 0x2588, 0x473e, { 0xb0, 0x8d, 0x67, 0xab, 0xff, 0x51, 0x4c, 0x28 } };
+
 
         // {506E8C7C-FFE7-46b8-9941-7B5833D0B9A1}
         static const EVOLUTION_IID IID_Sound3D =

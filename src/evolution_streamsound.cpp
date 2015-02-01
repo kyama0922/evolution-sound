@@ -64,11 +64,7 @@ void StreamSound::Create(ISoundFileLoader* soundfile){
     auto crypto = EVOLUTION::CORE::Hash::GetInstance();
     u8 tmp_file_name[HASH_SIZE];
     crypto->SHA1(tmp_file_name, &buffer[0], soundfile->GetSoundBufferSize());
-#if defined(UNICODE)
-    std::wstring tmp;
-#else
     std::string tmp;
-#endif
  
     tmp.reserve(FUNCTION::Strlen(CONFIG::Sound_Temp_Dir) + HASH_SIZE);
     tmp += CONFIG::Sound_Temp_Dir;
