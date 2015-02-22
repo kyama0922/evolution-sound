@@ -26,17 +26,17 @@ u32 Sound::Release(){
 
 RESULT Sound::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
 
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_ISound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_ISound))
     {
         *ppvObject = static_cast<Sound*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_Sound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_Sound))
     {
         *ppvObject = static_cast<ISound*>(this);
         this->AddRef();

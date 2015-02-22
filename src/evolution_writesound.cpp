@@ -18,22 +18,22 @@ u32 WriteSound::Release(){
 
 RESULT WriteSound::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
 
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IWriteSound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IWriteSound))
     {
         *ppvObject = static_cast<IWriteSound*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_ISound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_ISound))
     {
         *ppvObject = static_cast<ISound*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_WriteSound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_WriteSound))
     {
         *ppvObject = static_cast<WriteSound*>(this);
         this->AddRef();

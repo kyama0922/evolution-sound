@@ -31,17 +31,17 @@ u32 StreamSound::Release(){
 
 RESULT StreamSound::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
 
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IStreamSound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IStreamSound))
     {
         *ppvObject = static_cast<IStreamSound*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_StreamSound))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_StreamSound))
     {
         *ppvObject = static_cast<StreamSound*>(this);
         this->AddRef();

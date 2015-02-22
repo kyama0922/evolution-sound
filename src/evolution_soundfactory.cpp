@@ -38,17 +38,17 @@ u32 SoundFactory::Release(){
 
 RESULT SoundFactory::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
 
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_ISoundFactory))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_ISoundFactory))
     {
         *ppvObject = static_cast<ISoundFactory*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_SoundFactory))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_SoundFactory))
     {
         *ppvObject = static_cast<SoundFactory*>(this);
         this->AddRef();

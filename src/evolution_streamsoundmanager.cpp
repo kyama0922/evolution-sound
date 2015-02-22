@@ -47,17 +47,17 @@ u32 StreamSoundManager::Release(){
 
 RESULT StreamSoundManager::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
 
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IStreamSoundManager))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IStreamSoundManager))
     {
         *ppvObject = static_cast<IStreamSoundManager*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_StreamSoundManager))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_StreamSoundManager))
     {
         *ppvObject = static_cast<StreamSoundManager*>(this);
         this->AddRef();

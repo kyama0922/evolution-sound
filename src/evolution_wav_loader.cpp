@@ -20,17 +20,17 @@ u32 SoundFile_WavLoader::Release(){
 
 RESULT SoundFile_WavLoader::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
    
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_ISoundFileLoader))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_ISoundFileLoader))
     {
         *ppvObject = static_cast<ISoundFileLoader*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_SoundFile_WavLoader))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_SoundFile_WavLoader))
     {
         *ppvObject = static_cast<SoundFile_WavLoader*>(this);
         this->AddRef();

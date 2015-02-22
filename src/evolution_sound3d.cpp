@@ -27,17 +27,17 @@ u32 Sound3D::Release(){
 
 RESULT Sound3D::QueryInterface(EVOLUTION::EVOLUTION_IID riid, void **ppvObject){
 
-    if (IsEqualGUID(riid, EVOLUTION_GUID::IID_IUnknown))
+    if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_IUnknown))
     {
         *ppvObject = static_cast<IUnknown *>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_ISound3D))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_ISound3D))
     {
         *ppvObject = static_cast<ISound3D*>(this);
         this->AddRef();
     }
-    else if (IsEqualGUID(riid, EVOLUTION_GUID::IID_Sound3D))
+    else if (EVOLUTION_EQUALGUID(riid, EVOLUTION_GUID::IID_Sound3D))
     {
         *ppvObject = static_cast<Sound3D*>(this);
         this->AddRef();
